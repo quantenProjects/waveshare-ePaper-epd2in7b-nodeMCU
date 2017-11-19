@@ -112,16 +112,16 @@ int Epd::Init(void) {
  *  @brief: basic function for sending commands
  */
 void Epd::SendCommand(unsigned char command) {
-    DigitalWrite(dc_pin, LOW);
+    DigitalWrite(dc_pin, false);
     SpiTransfer(command);
 }
 
 /**
  *  @brief: basic function for sending data
  */
-void Epd::SendData(unsigned char data) {
-    DigitalWrite(dc_pin, HIGH);
-    SpiTransfer(data);
+void Epd::SendData(unsigned char dataa) {
+    DigitalWrite(dc_pin, true);
+    SpiTransfer(dataa);
 }
 
 /**
@@ -139,9 +139,9 @@ void Epd::WaitUntilIdle(void) {
  *          see Epd::Sleep();
  */
 void Epd::Reset(void) {
-    DigitalWrite(reset_pin, LOW);
+    DigitalWrite(reset_pin, false);
     DelayMs(200);
-    DigitalWrite(reset_pin, HIGH);
+    DigitalWrite(reset_pin, true);
     DelayMs(200);   
 }
 
@@ -289,7 +289,7 @@ void Epd::DisplayFrame(const unsigned char* frame_buffer_black, const unsigned c
         SendCommand(DATA_START_TRANSMISSION_1);           
         DelayMs(2);
         for(int i = 0; i < width * height / 8; i++) {
-            SendData(pgm_read_byte(&frame_buffer_black[i]));  
+            SendData((frame_buffer_black[i]));  
         }  
         DelayMs(2);
     }
@@ -297,7 +297,7 @@ void Epd::DisplayFrame(const unsigned char* frame_buffer_black, const unsigned c
         SendCommand(DATA_START_TRANSMISSION_2);
         DelayMs(2);
         for(int i = 0; i < width * height / 8; i++) {
-            SendData(pgm_read_byte(&frame_buffer_red[i]));  
+            SendData((frame_buffer_red[i]));  
         }  
         DelayMs(2);
     }

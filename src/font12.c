@@ -37,13 +37,13 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "fonts.h"
-#include <avr/pgmspace.h>
+//#include <avr/pgmspace.h>
 
 // 
 //  Font data for Courier New 12pt
 // 
 
-const uint8_t Font12_Table[] PROGMEM = 
+const uint8_t Font12_Table[] = 
 {
 	// @0 ' ' (7 pixels wide)
 	0x00, //        

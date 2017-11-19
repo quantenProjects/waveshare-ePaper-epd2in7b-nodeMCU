@@ -37,10 +37,10 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "fonts.h"
-#include <avr/pgmspace.h>
+//#include <avr/pgmspace.h>
 
 // Character bitmaps for Courier New 15pt
-const uint8_t Font20_Table[] PROGMEM = 
+const uint8_t Font20_Table[] = 
 {
 	// @0 ' ' (14 pixels wide)
 	0x00, 0x00, //               
